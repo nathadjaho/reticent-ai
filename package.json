@@ -1,0 +1,13 @@
+{
+  "name": "trace-voice",
+  "version": "0.1.0",
+  "description": "TRACE Debrief: a voice agent for humanitarian caseworkers that cannot write a case field the caseworker did not say and confirm. Built on the AssemblyAI Voice Agent API.",
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test",
+    "eval": "node eval/run.js"
+  }
+}

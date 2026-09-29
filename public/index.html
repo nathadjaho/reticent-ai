@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reticent AI · TRACE Debrief</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <img class="logo" src="reticent-logo.svg" alt="Reticent AI by TRACE" /><span class="sub">Debrief · voice agent for protection caseworkers</span>
+    </div>
+    <div class="controls">
+      <span id="status" class="pill idle">Idle</span>
+      <button id="start" class="primary">Start live debrief</button>
+      <button id="end" disabled>End</button>
+      <select id="scenario" aria-label="Replay scenario"></select>
+      <button id="replay">Replay</button>
+      <button id="export" title="Download the session record, transcript and audit log">Export JSON</button>
+    </div>
+  </header>
+
+  <p class="banner">Synthetic data only. The agent talks to the <b>caseworker</b> after an interview, never to the survivor.
+    It can <i>propose</i> a field; only code can <i>write</i> it: the quote must match words the caseworker said, the value must be read back aloud, and the caseworker must say yes.</p>
+
+  <main>
+    <section class="col">
+      <h2>Conversation</h2>
+      <div id="partial" class="partial"></div>
+      <ol id="transcript" class="transcript"></ol>
+    </section>
+
+    <section class="col">
+      <h2>Case record <small>(HTCDS subset)</small></h2>
+      <div id="record"></div>
+    </section>
+
+    <section class="col">
+      <h2>Indicators <small>(deterministic, confirmed fields only)</small></h2>
+      <div id="risk"></div>
+      <h2>Guardrails</h2>
+      <div id="metrics" class="metrics"></div>
+      <ol id="audit" class="audit"></ol>
+      <details class="nongoals">
+        <summary>What TRACE Debrief will not do</summary>
+        <ul>
+          <li>Talk to survivors, or listen during the interview.</li>
+          <li>Record the caseworker's impression as something the survivor said. Hedged speech ("I think…", "je pense…") is kept apart by code.</li>
+          <li>Judge credibility from hesitation, pauses, tone or speech timing. No timing feature is computed.</li>
+          <li>Store names, phone numbers or addresses. Only a pseudonymous case code.</li>
+          <li>Decide trafficking status. Indicators are an aid; high-risk cases go to a supervisor.</li>
+        </ul>
+      </details>
+    </section>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
